@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #2c5f8a;
+    --color-bg: #f7f9fb;
+    --color-text: #1c1c1c;
+    --spacing-base: 1rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-base);
+}
+
+.card {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: var(--spacing-base);
+  margin-bottom: var(--spacing-base);
+}
+
+.nav-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #1e4666;
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--color-text);
+  outline-offset: 2px;
+}

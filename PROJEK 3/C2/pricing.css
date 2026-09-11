@@ -1,0 +1,77 @@
+:root {
+  --spacing: 1.5rem;
+  --color-primary: #2554e0;
+  --color-text: #1a1a1a;
+}
+
+.pricing-list {
+  display: flex;
+  flex-wrap: wrap;              
+  gap: var(--spacing);  
+  align-items: stretch; /* Memastikan semua kartu memiliki tinggi sama */                  
+}
+.price-card {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;  
+  padding: 2rem;
+  border: 1px solid #e0e0e0; 
+  border-radius: 12px;
+  box-sizing: border-box;  
+  background: white;
+}
+
+.price-card--featured {
+  border: 2px solid var(--color-primary);  
+}
+.badge {
+  background: var(--color-text);
+  color: white;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+.button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  background: var(--color-primary);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 8px;
+}
+.button:hover {
+  background: #1a44b8 ;             
+}
+.button:focus-visible {
+  outline: 3px solid #FFFF00;       
+  outline-offset: 3px;
+}
+@media (min-width: 840px) {     
+  .price-card {
+    flex: 1;
+  }
+}
+
+.container {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: var(--spacing);
+}
+
+body {
+  background: #bfbfbf;
+  color: var(--color-text);
+  font-family: system-ui, sans-serif; 
+  margin: 0;
+}
+
+.price-card ul {
+  margin: 0 0 var(--spacing) 0;
+  padding-left: 1.25rem;
+  flex-grow: 1; /* Mendorong tombol ke paling bawah kartu */
+}
