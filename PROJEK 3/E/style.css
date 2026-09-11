@@ -1,0 +1,101 @@
+/* --- Pengaturan Dasar --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Aksesibilitas (Fokus Visual saat pakai Keyboard) --- */
+a:focus-visible, .tombol:focus-visible {
+    outline: 3px solid orange;
+}
+
+/* --- Header --- */
+header {
+    background-color: white;
+    padding: 20px 40px;
+    display: flex;
+    flex-wrap: wrap; /* Membuat menu turun ke bawah jika layar sempit */
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    margin: 0;
+    color: #0056b3;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* --- Hero Section --- */
+#hero {
+    display: flex;
+    flex-wrap: wrap; /* Gambar akan turun ke bawah jika layar sempit */
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 60px 20px;
+    background-color: white;
+}
+
+.teks-hero {
+    max-width: 400px;
+}
+
+.teks-hero h1 {
+    color: #0056b3;
+    margin-top: 0;
+}
+
+.tombol {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* --- Fitur Section --- */
+#fitur {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.kartu-fitur {
+    display: flex;
+    flex-wrap: wrap; /* Kartu akan tersusun ke bawah secara otomatis di HP */
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.kartu {
+    background-color: white;
+    width: 250px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.kartu h3 {
+    color: #0056b3;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
