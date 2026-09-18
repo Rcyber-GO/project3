@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Profile Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="btn-theme" class="btn-theme">Ganti Tema</button>
+
+    <div class="card-container">
+        <!-- States -->
+        <div id="state-loading" class="state-message">Memuat data profil...</div>
+        
+        <div id="state-empty" class="state-message hidden">Data profil kosong.</div>
+        
+        <div id="state-error" class="state-message hidden">
+            <p>Gagal memuat data.</p>
+            <button id="btn-retry">Coba Lagi</button>
+        </div>
+
+        <!-- Main Content (Hidden by default until loaded) -->
+        <div id="state-content" class="hidden">
+            <h2 id="profile-name"></h2>
+            <h4 id="profile-title"></h4>
+            
+            <button id="btn-detail" aria-expanded="false">Lihat Detail</button>
+            <div id="detail-content" class="hidden">
+                <p id="profile-bio"></p>
+            </div>
+
+            <div class="skills-section">
+                <h3>Keterampilan</h3>
+                <ul id="skills-list"></ul>
+                
+                <form id="form-skill">
+                    <input type="text" id="input-skill" placeholder="Tambah keterampilan baru...">
+                    <button type="submit" id="btn-add-skill">Tambah</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
