@@ -1,0 +1,28 @@
+* { box-sizing: border-box; }
+body {
+ margin: 0;
+ font-family: Arial, sans-serif;
+ color: #1f2937;
+ background: #f3f4f6;
+}
+.container {
+ width: min(92%, 760px);
+ margin-inline: auto;
+ padding-block: 40px;
+}
+form, .kartu {
+ margin-block: 16px;
+ padding: 20px;
+ border-radius: 12px;
+ background: #ffffff;
+}
+label, input, select, button { display: block; }
+input, select, button {
+ width: 100%;
+ margin-block: 6px 12px;
+ padding: 10px;
+}
+button { cursor: pointer; }
+.grid { display: grid; gap: 12px; }
+.error { display: block; min-height: 20px; color: #b91c1c; }
+[aria-invalid="true"] { outline: 2px solid #b91c1c; }

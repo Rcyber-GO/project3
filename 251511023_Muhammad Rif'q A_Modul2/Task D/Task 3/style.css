@@ -1,0 +1,22 @@
+* { box-sizing: border-box; }
+body {
+ margin: 0;
+ font-family: Arial, sans-serif;
+ color: #1f2937;
+ background: #f3f4f6;
+}
+.container {
+ width: min(92%, 760px);
+ margin-inline: auto;
+ padding-block: 48px;
+}
+button { margin: 8px 8px 16px 0; padding: 10px 16px; }
+.grid { display: grid; gap: 12px; }
+.kartu {
+ padding: 16px;
+ border-radius: 12px;
+ background: #ffffff;
+}
+#status[data-state="loading"] { color: #1d4ed8; }
+#status[data-state="error"] { color: #b91c1c; }
+#status[data-state="success"] { color: #166534; }

@@ -1,0 +1,73 @@
+* {
+ box-sizing: border-box;
+}
+body {
+ margin: 0;
+ min-height: 100vh;
+ font-family: Arial, sans-serif;
+ color: #1f2937;
+ background: #f3f4f6;
+ transition: background 200ms, color 200ms;
+}
+.container {
+ width: min(90%, 720px);
+ margin-inline: auto;
+ padding-block: 64px;
+}
+.praktikum-card {
+ padding: 32px;
+ border: 2px solid #d1d5db;
+ border-radius: 16px;
+ background: #ffffff;
+}
+.label {
+ margin: 0 0 8px;
+ font-weight: 700;
+ color: #2563eb;
+}
+label,
+input {
+ display: block;
+ width: 100%;
+}
+input {
+ margin-top: 8px;
+ padding: 12px;
+ border: 1px solid #9ca3af;
+ border-radius: 8px;
+ font: inherit;
+}
+.counter {
+ margin-top: 6px;
+ color: #6b7280;
+}
+
+.actions {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 12px;
+ margin-top: 24px;
+}
+button {
+ padding: 10px 16px;
+ border: 0;
+ border-radius: 8px;
+ color: #ffffff;
+ background: #2563eb;
+ cursor: pointer;
+}
+button:focus-visible {
+ outline: 3px solid #f59e0b;
+ outline-offset: 3px;
+}
+body.is-active {
+ color: #f9fafb;
+ background: #111827;
+}
+body.is-active .praktikum-card {
+ border-color: #60a5fa;
+ background: #1f2937;
+}
+body.is-active .counter {
+ color: #d1d5db;
+}
