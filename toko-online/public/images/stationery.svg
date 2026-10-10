@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title">
+  <title id="title">Ilustrasi perlengkapan alat tulis</title>
+  <rect width="720" height="420" rx="32" fill="#eaf1ff"/>
+  <circle cx="575" cy="90" r="54" fill="#d4e3ff"/>
+  <rect x="105" y="78" width="245" height="290" rx="18" fill="#fff" stroke="#b7c9ed" stroke-width="10"/>
+  <path d="M160 150h132M160 194h132M160 238h132M160 282h92" stroke="#8da9df" stroke-width="11" stroke-linecap="round"/>
+  <path d="m430 312 102-222c8-17 32-18 42-2l19 29c6 9 6 21 1 31L492 372l-73 40 11-100Z" fill="#f3c969" stroke="#8c6412" stroke-width="9" stroke-linejoin="round"/>
+  <path d="m532 90 60 29M431 312l61 60" stroke="#8c6412" stroke-width="9"/>
+  <path d="m419 352 54 28-54 32 11-60Z" fill="#e9c6a0" stroke="#8c6412" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="370" y="72" width="28" height="285" rx="14" transform="rotate(-13 370 72)" fill="#e98787"/>
+  <path d="m338 83 51-12 8 33-51 12z" fill="#d6e2fa"/>
+  <text x="112" y="397" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#36558e">PERLENGKAPAN SEKOLAH</text>
+</svg>
