@@ -1,0 +1,461 @@
+{
+  "info": {
+    "name": "Stateless Shopping Cart - Modul 4b",
+    "description": "Koleksi pengujian Modul Praktikum 4 (Stateless Shopping Cart). Jalankan berurutan: request pertama mengambil token CSRF secara otomatis.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "csrf_token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Ambil token CSRF (GET /)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+              "const m = pm.response.text().match(/name=\"csrf-token\" content=\"([^\"]+)\"/);",
+              "pm.test(\"Token CSRF ditemukan\", () => pm.expect(m).to.not.be.null);",
+              "pm.collectionVariables.set(\"csrf_token\", m[1]);",
+              "console.log(\"Token CSRF:\", m[1]);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "name": "2. Tambah Pulpen - tanpa token CSRF (harus 419)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 419 (CSRF ditolak)\", () => pm.response.to.have.status(419));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cart\": {\n    \"1\": 2\n  },\n  \"product_id\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/cart/add",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart",
+            "add"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3. Tambah Pulpen - kirim ke-1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+              "const d = pm.response.json();",
+              "pm.test(\"Buku Tulis x2, Pulpen x1\", () => { pm.expect(d.items[0].quantity).to.eql(2); pm.expect(d.items[1].quantity).to.eql(1); });",
+              "pm.test(\"Total 13000\", () => pm.expect(d.total).to.eql(13000));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-CSRF-TOKEN",
+            "value": "{{csrf_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cart\": {\n    \"1\": 2\n  },\n  \"product_id\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/cart/add",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart",
+            "add"
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. Tambah Pulpen - kirim ke-2 (payload sama)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+              "const d = pm.response.json();",
+              "pm.test(\"Buku Tulis x2, Pulpen x1\", () => { pm.expect(d.items[0].quantity).to.eql(2); pm.expect(d.items[1].quantity).to.eql(1); });",
+              "pm.test(\"Total 13000\", () => pm.expect(d.total).to.eql(13000));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-CSRF-TOKEN",
+            "value": "{{csrf_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cart\": {\n    \"1\": 2\n  },\n  \"product_id\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/cart/add",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart",
+            "add"
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. Tambah Pulpen - kirim ke-3 (payload sama)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+              "const d = pm.response.json();",
+              "pm.test(\"Buku Tulis x2, Pulpen x1\", () => { pm.expect(d.items[0].quantity).to.eql(2); pm.expect(d.items[1].quantity).to.eql(1); });",
+              "pm.test(\"Total 13000\", () => pm.expect(d.total).to.eql(13000));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-CSRF-TOKEN",
+            "value": "{{csrf_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cart\": {\n    \"1\": 2\n  },\n  \"product_id\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/cart/add",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart",
+            "add"
+          ]
+        }
+      }
+    },
+    {
+      "name": "6. Hitung ulang (POST /cart/update)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+              "const d = pm.response.json();",
+              "pm.test(\"Buku Tulis x2, Pulpen x1\", () => { pm.expect(d.items[0].quantity).to.eql(2); pm.expect(d.items[1].quantity).to.eql(1); });",
+              "pm.test(\"Total 13000\", () => pm.expect(d.total).to.eql(13000));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-CSRF-TOKEN",
+            "value": "{{csrf_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cart\": {\n    \"1\": 2,\n    \"2\": 1\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/cart/update",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "7. Harga dimanipulasi - harus diabaikan",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+              "const d = pm.response.json();",
+              "pm.test(\"Harga tetap 5000 dari server\", () => pm.expect(d.items[0].price).to.eql(5000));",
+              "pm.test(\"Total 10000, bukan 1\", () => pm.expect(d.total).to.eql(10000));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-CSRF-TOKEN",
+            "value": "{{csrf_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cart\": {\n    \"1\": 2\n  },\n  \"price\": 1,\n  \"total\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/cart/update",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "8. Produk tidak dikenal (harus 404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-CSRF-TOKEN",
+            "value": "{{csrf_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cart\": {},\n  \"product_id\": 99\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/cart/add",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart",
+            "add"
+          ]
+        }
+      }
+    },
+    {
+      "name": "9. Jumlah tidak valid (harus 422)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 422\", () => pm.response.to.have.status(422));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-CSRF-TOKEN",
+            "value": "{{csrf_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cart\": {\n    \"1\": 100\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/cart/update",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart",
+            "update"
+          ]
+        }
+      }
+    }
+  ]
+}
